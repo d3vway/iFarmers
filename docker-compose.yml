@@ -11,6 +11,7 @@ services:
         ports:
             - '${APP_PORT:-80}:80'
             - '6001:6001'
+            - '8888:8888'  
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1
