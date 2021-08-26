@@ -3,9 +3,11 @@
 namespace App\Observers;
 
 use App\Models\Employee;
-
+use App\HelpTrait\BroadcastHttpPush;
 class EmployeeObserver
 {
+    use BroadcastHttpPush;
+
     /**
      * Handle the Employee "created" event.
      *
@@ -14,7 +16,15 @@ class EmployeeObserver
      */
     public function created(Employee $employee)
     {
-        // die("created");
+        $broadcastChannel = array(
+            "channel" => "dashboard", // channel name, ` private - 'means private
+            "name" => "dashboard", // event name
+            "data" => array(
+                "status" => 200, 
+                "message" => "Employee created!"
+            )
+        );
+        $this->push($broadcastChannel);
     }
 
     /**
@@ -25,7 +35,15 @@ class EmployeeObserver
      */
     public function updated(Employee $employee)
     {
-        //
+        $broadcastChannel = array(
+            "channel" => "dashboard", // channel name, ` private - 'means private
+            "name" => "dashboard", // event name
+            "data" => array(
+                "status" => 200, 
+                "message" => "Survey updated!"
+            )
+        );
+        $this->push($broadcastChannel);
     }
 
     /**

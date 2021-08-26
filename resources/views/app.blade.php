@@ -400,13 +400,31 @@
     </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
 </head>
 
 <body>
     <div id="app">
-       
+        <h3>Dashboard</h3>
     </div>
-    
+
+    <script src="/js/app.js"></script>
+    <script>
+        Echo.channel('dashboard')
+            .listen('dashboard', e => {
+                alert("wkwkw");
+                console.log(e)
+            })
+
+        window.Echo.private('dashboard').listen('dashboard', (res) => {
+            alert("asd")
+            if (res.status === 200) {
+                console.log(res.message)
+            } else {
+                console.log('something wrong!')
+            }
+        })
+    </script>
 </body>
 
 </html>

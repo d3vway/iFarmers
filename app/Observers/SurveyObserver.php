@@ -3,9 +3,11 @@
 namespace App\Observers;
 
 use App\Models\Survey;
-
+use App\HelpTrait\BroadcastHttpPush;
 class SurveyObserver
 {
+    use BroadcastHttpPush;
+
     /**
      * Handle the Survey "created" event.
      *
@@ -14,7 +16,15 @@ class SurveyObserver
      */
     public function created(Survey $survey)
     {
-        //
+        $broadcastChannel = array(
+            "channel" => "dashboard", // channel name, ` private - 'means private
+            "name" => "dashboard", // event name
+            "data" => array(
+                "status" => 200, 
+                "message" => "Survey added!"
+            )
+        );
+        $this->push($broadcastChannel);
     }
 
     /**
@@ -25,7 +35,15 @@ class SurveyObserver
      */
     public function updated(Survey $survey)
     {
-        //
+        $broadcastChannel = array(
+            "channel" => "dashboard", // channel name, ` private - 'means private
+            "name" => "dashboard", // event name
+            "data" => array(
+                "status" => 200, 
+                "message" => "Survey updated!"
+            )
+        );
+        $this->push($broadcastChannel);
     }
 
     /**
