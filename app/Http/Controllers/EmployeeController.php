@@ -31,13 +31,13 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = json_decode($request->getContent(), true);
 
         $validator = Validator::make($data, [
-            'name' => 'required|max:50',
-            'age' => 'required|max:50',
-            'job' => 'required|max:50',
-            'salary' => 'required|50'
+            'name' => 'required|string|max:50',
+            'age' => 'required|string|max:50',
+            'job' => 'required|string|max:50',
+            'salary' => 'required|string|max:50'
         ]);
 
         if($validator->fails()){
@@ -73,7 +73,16 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        $employee->update($request->all());
+        $data = json_decode($request->getContent(), true);
+
+        $validator = Validator::make($data, [
+            'name' => 'required|string|max:50',
+            'age' => 'required|string|max:50',
+            'job' => 'required|string|max:50',
+            'salary' => 'required|string|max:50'
+        ]);
+
+        $employee->update($data);
 
         return response([ 'employee' => new 
         EmployeeResource($employee), 'message' => 'Success'], 200);
