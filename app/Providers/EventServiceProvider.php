@@ -7,6 +7,12 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Models\Employee;
+use App\Observers\EmployeeObserver;
+
+use App\Models\Survey;
+use App\Observers\SurveyObserver;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -27,6 +33,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Employee::observe(EmployeeObserver::class);
+        Survey::observe(SurveyObserver::class);
     }
 }
