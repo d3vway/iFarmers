@@ -67,7 +67,7 @@
     "repositories": {
         "hooks": {
             "type": "composer",
-            "url": "https://packagist.org"
+            "url": "https://packagist.org/"
         }
     }
 }
