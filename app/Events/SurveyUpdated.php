@@ -14,20 +14,32 @@ class SurveyUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $username;
-
-    public $message;
+    public $employee_id; 
+    public $farm_name;
+    public $number_of_farmer; 
+    public $email; 
+    public $phone;
+    public $adddress; 
+    public $product; 
+    public $weight; 
+    public $price;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($survey)
     {
-        $this->username = "test saja";
-
-        $this->message = "test message";
+        $this->employee_id = $survey->employee_id; 
+        $this->farm_name = $survey->farm_name;
+        $this->number_of_farmer = $survey->number_of_farmer;
+        $this->email = $survey->email;
+        $this->phone = $survey->phone;
+        $this->adddress = $survey->adddress; 
+        $this->product = $survey->product; 
+        $this->weight = $survey->weight; 
+        $this->price = $survey->price;
     }
 
     /**

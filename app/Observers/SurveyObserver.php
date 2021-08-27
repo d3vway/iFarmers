@@ -17,7 +17,7 @@ class SurveyObserver
      */
     public function created(Survey $survey)
     {
-        event(new SurveyUpdated());
+        event(new SurveyUpdated($survey));
 
         // $broadcastChannel = array(
         //     "channel" => "dashboard", // channel name, ` private - 'means private
@@ -38,7 +38,7 @@ class SurveyObserver
      */
     public function updated(Survey $survey)
     {
-        event(new SurveyUpdated());
+        event(new SurveyUpdated($survey));
 
         // $broadcastChannel = array(
         //     "channel" => "dashboard", // channel name, ` private - 'means private

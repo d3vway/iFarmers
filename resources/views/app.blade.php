@@ -402,17 +402,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
+        // Pusher.logToConsole = true;
 
-        var pusher = new Pusher('b20744bd10fd48dc404f', {
-            cluster: 'ap1'
-        });
+        // var pusher = new Pusher('b20744bd10fd48dc404f', {
+        //     cluster: 'ap1'
+        // });
 
-        var channel = pusher.subscribe('my-channel');
-        channel.bind('SurveyUpdated', function(data) {
-            alert(JSON.stringify(data));
-        });
+        // var channel = pusher.subscribe('my-channel');
+        // channel.bind('SurveyUpdated', function(data) {
+        //     alert(JSON.stringify(data));
+        // });
     </script>
 </head>
 

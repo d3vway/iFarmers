@@ -1875,8 +1875,8 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   cluster: 'ap1',
   encrypted: true
 });
-window.Echo["private"]('my-channel').listen('App\\Events\\SurveyUpdated', function (e) {
-  alert(JSON.stringify(data));
+window.Echo["private"]('my-channel').listen('SurveyUpdated', function (e) {
+  alert(JSON.stringify(e));
 });
 
 /***/ }),

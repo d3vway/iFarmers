@@ -27,5 +27,5 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
  window.Echo.private('my-channel')
         .listen('SurveyUpdated', (e) => {
-            alert(JSON.stringify(data));
+            alert(JSON.stringify(e));
         });
