@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Survey;
 use App\HelpTrait\BroadcastHttpPush;
+use App\Events\SurveyUpdated;
 class SurveyObserver
 {
     use BroadcastHttpPush;
@@ -16,15 +17,17 @@ class SurveyObserver
      */
     public function created(Survey $survey)
     {
-        $broadcastChannel = array(
-            "channel" => "dashboard", // channel name, ` private - 'means private
-            "name" => "dashboard", // event name
-            "data" => array(
-                "status" => 200, 
-                "message" => "Survey added!"
-            )
-        );
-        $this->push($broadcastChannel);
+        event(new SurveyUpdated());
+
+        // $broadcastChannel = array(
+        //     "channel" => "dashboard", // channel name, ` private - 'means private
+        //     "name" => "dashboard", // event name
+        //     "data" => array(
+        //         "status" => 200, 
+        //         "message" => "Survey added!"
+        //     )
+        // );
+        // $this->push($broadcastChannel);
     }
 
     /**
@@ -35,15 +38,17 @@ class SurveyObserver
      */
     public function updated(Survey $survey)
     {
-        $broadcastChannel = array(
-            "channel" => "dashboard", // channel name, ` private - 'means private
-            "name" => "dashboard", // event name
-            "data" => array(
-                "status" => 200, 
-                "message" => "Survey updated!"
-            )
-        );
-        $this->push($broadcastChannel);
+        event(new SurveyUpdated());
+
+        // $broadcastChannel = array(
+        //     "channel" => "dashboard", // channel name, ` private - 'means private
+        //     "name" => "dashboard", // event name
+        //     "data" => array(
+        //         "status" => 200, 
+        //         "message" => "Survey updated!"
+        //     )
+        // );
+        // $this->push($broadcastChannel);
     }
 
     /**
