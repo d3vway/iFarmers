@@ -402,7 +402,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
-        // Pusher.logToConsole = true;
+        Pusher.logToConsole = true;
 
         // var pusher = new Pusher('b20744bd10fd48dc404f', {
         //     cluster: 'ap1'
