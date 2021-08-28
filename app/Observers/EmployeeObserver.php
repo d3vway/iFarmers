@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Employee;
 use App\HelpTrait\BroadcastHttpPush;
+use App\Events\EmployeeUpdated;
 class EmployeeObserver
 {
     use BroadcastHttpPush;
@@ -16,15 +17,16 @@ class EmployeeObserver
      */
     public function created(Employee $employee)
     {
-        $broadcastChannel = array(
-            "channel" => "dashboard", // channel name, ` private - 'means private
-            "name" => "dashboard", // event name
-            "data" => array(
-                "status" => 200, 
-                "message" => "Employee created!"
-            )
-        );
-        $this->push($broadcastChannel);
+        event(new EmployeeUpdated($employee, "create"));
+        // $broadcastChannel = array(
+        //     "channel" => "dashboard", // channel name, ` private - 'means private
+        //     "name" => "dashboard", // event name
+        //     "data" => array(
+        //         "status" => 200, 
+        //         "message" => "Employee created!"
+        //     )
+        // );
+        // $this->push($broadcastChannel);
     }
 
     /**
@@ -35,15 +37,16 @@ class EmployeeObserver
      */
     public function updated(Employee $employee)
     {
-        $broadcastChannel = array(
-            "channel" => "dashboard", // channel name, ` private - 'means private
-            "name" => "dashboard", // event name
-            "data" => array(
-                "status" => 200, 
-                "message" => "Survey updated!"
-            )
-        );
-        $this->push($broadcastChannel);
+        event(new EmployeeUpdated($employee, "update"));
+        // $broadcastChannel = array(
+        //     "channel" => "dashboard", // channel name, ` private - 'means private
+        //     "name" => "dashboard", // event name
+        //     "data" => array(
+        //         "status" => 200, 
+        //         "message" => "Survey updated!"
+        //     )
+        // );
+        // $this->push($broadcastChannel);
     }
 
     /**
@@ -54,7 +57,7 @@ class EmployeeObserver
      */
     public function deleted(Employee $employee)
     {
-        // die("deleted");
+        event(new EmployeeUpdated($employee, "delete"));
     }
 
     /**
@@ -65,7 +68,7 @@ class EmployeeObserver
      */
     public function restored(Employee $employee)
     {
-        //
+        event(new EmployeeUpdated($employee, "restore"));
     }
 
     /**
@@ -76,6 +79,6 @@ class EmployeeObserver
      */
     public function forceDeleted(Employee $employee)
     {
-        //
+        event(new EmployeeUpdated($employee, "forcedelete"));
     }
 }

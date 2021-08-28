@@ -17,7 +17,7 @@ class SurveyObserver
      */
     public function created(Survey $survey)
     {
-        event(new SurveyUpdated($survey));
+        event(new SurveyUpdated($survey, "create"));
 
         // $broadcastChannel = array(
         //     "channel" => "dashboard", // channel name, ` private - 'means private
@@ -38,7 +38,7 @@ class SurveyObserver
      */
     public function updated(Survey $survey)
     {
-        event(new SurveyUpdated($survey));
+        event(new SurveyUpdated($survey, "update"));
 
         // $broadcastChannel = array(
         //     "channel" => "dashboard", // channel name, ` private - 'means private
@@ -59,7 +59,7 @@ class SurveyObserver
      */
     public function deleted(Survey $survey)
     {
-        //
+        event(new SurveyUpdated($survey, "delete"));
     }
 
     /**
@@ -70,7 +70,7 @@ class SurveyObserver
      */
     public function restored(Survey $survey)
     {
-        //
+        event(new SurveyUpdated($survey, "restore"));
     }
 
     /**
@@ -81,6 +81,6 @@ class SurveyObserver
      */
     public function forceDeleted(Survey $survey)
     {
-        //
+        event(new SurveyUpdated($survey, "forcedelete"));
     }
 }

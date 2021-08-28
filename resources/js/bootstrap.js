@@ -17,15 +17,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
  import Echo from "laravel-echo"
-
  window.Echo = new Echo({
-     broadcaster: 'pusher',
-     key: 'b20744bd10fd48dc404f',
-     cluster: 'ap1',
-     encrypted: true
+     broadcaster: MIX_BROADCAST_DRIVER,
+     key: MIX_PUSHER_APP_KEY,
+     cluster: MIX_PUSHER_APP_CLUSTER,
+     encrypted: SOCKETENCRYPTED
  });
-
- window.Echo.private('my-channel')
-        .listen('SurveyUpdated', (e) => {
-            alert(JSON.stringify(e));
-        });

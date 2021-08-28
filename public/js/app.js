@@ -1870,13 +1870,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
-  broadcaster: 'pusher',
-  key: 'b20744bd10fd48dc404f',
-  cluster: 'ap1',
-  encrypted: true
-});
-window.Echo["private"]('my-channel').listen('SurveyUpdated', function (e) {
-  alert(JSON.stringify(e));
+  broadcaster: MIX_BROADCAST_DRIVER,
+  key: MIX_PUSHER_APP_KEY,
+  cluster: MIX_PUSHER_APP_CLUSTER,
+  encrypted: SOCKETENCRYPTED
 });
 
 /***/ }),
