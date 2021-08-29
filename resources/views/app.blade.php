@@ -7,6 +7,7 @@
             <div class="col-md">
                 <h2>Dashboard</h2>
                 <div id="dashboard_content"></div>
+                @include('components.cards')
             </div>
         </div>
     </div>
@@ -15,16 +16,37 @@
 @section('javascript')
     <script>
         $(document).ready(function() {
-            Pusher.logToConsole = true;
+            var arrData = {
+                        CARDHEADER: "CARDHEADER", 
+                        CARDTITLE: "CARDTITLE",
+                        CARDBODY: "CARDBODY", 
+                        CARDTIME: new Date()
+                    };
+            const cardTemplate = $("div#template-card").html();
 
+            Pusher.logToConsole = true;
             window.Echo.private('my-channel')
                 .listen('EmployeeUpdated', (e) => {
-                    console.log("EmployeeUpdated", (e));
-                    $("div#dashboard_content").append(JSON.stringify(e));
+                    arrData = {
+                        CARDHEADER: "Employe " + e.action, 
+                        CARDTITLE: e.name,
+                        CARDBODY: e.age + "$." + e.salary, 
+                        CARDTIME: new Date()
+                    };
+                    let tmpl = cardTemplate;
+                    tmpl = window.fillCard(arrData, tmpl);
+                    $("div#dashboard_content").append(tmpl);
                 })
                 .listen('SurveyUpdated', (e) => {
-                    console.log("SurveyUpdated", (e));
-                    $("div#dashboard_content").append(JSON.stringify(e));
+                    arrData = {
+                        CARDHEADER: "Survey " + e.action, 
+                        CARDTITLE: e.farm_name,
+                        CARDBODY: e.product + ", " +e.weight + "kg", 
+                        CARDTIME: new Date()
+                    };
+                    let tmpl = cardTemplate;
+                    tmpl = window.fillCard(arrData, tmpl);
+                    $("div#dashboard_content").append(tmpl);
                 });
         });
     </script>

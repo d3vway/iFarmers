@@ -1842,6 +1842,8 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./components/helpers */ "./resources/js/components/helpers.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -1875,6 +1877,23 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   cluster: MIX_PUSHER_APP_CLUSTER,
   encrypted: SOCKETENCRYPTED
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/helpers.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/helpers.js ***!
+  \********************************************/
+/***/ (() => {
+
+window.fillCard = function (arrData, cardTemplate) {
+  CARDHEADER = arrData.CARDHEADER;
+  CARDTITLE = arrData.CARDTITLE;
+  CARDBODY = arrData.CARDBODY;
+  CARDTIME = arrData.CARDTIME;
+  cardTemplate = cardTemplate.replace("CARDHEADER", CARDHEADER).replace("CARDTITLE", CARDTITLE).replace("CARDBODY", CARDBODY).replace("CARDTIME", CARDTIME);
+  return cardTemplate;
+};
 
 /***/ }),
 
