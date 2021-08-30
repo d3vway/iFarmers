@@ -1892,7 +1892,9 @@ window.fillCard = function (arrData, cardTemplate) {
   CARDBODY = arrData.CARDBODY;
   CARDTIME = arrData.CARDTIME;
   DETAILURL = arrData.DETAILURL;
-  cardTemplate = cardTemplate.replace("CARDHEADER", CARDHEADER).replace("CARDTITLE", CARDTITLE).replace("CARDBODY", CARDBODY).replace("CARDTIME", CARDTIME).replace("DETAILURL", DETAILURL);
+  OBJECTID = arrData.OBJECTID;
+  OBJECTTYPE = arrData.OBJECTTYPE;
+  cardTemplate = cardTemplate.replaceAll("CARDHEADER", CARDHEADER).replaceAll("CARDTITLE", CARDTITLE).replaceAll("CARDBODY", CARDBODY).replaceAll("CARDTIME", CARDTIME).replaceAll("DETAILURL", DETAILURL).replaceAll("OBJECTID", OBJECTID).replaceAll("OBJECTTYPE", OBJECTTYPE);
   return cardTemplate;
 };
 

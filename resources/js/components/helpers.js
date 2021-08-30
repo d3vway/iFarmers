@@ -1,11 +1,13 @@
 window.fillCard = (arrData, cardTemplate) => {
-    ({ CARDHEADER, CARDTITLE, CARDBODY, CARDTIME, DETAILURL } = arrData);
+    ({ CARDHEADER, CARDTITLE, CARDBODY, CARDTIME, DETAILURL, OBJECTID, OBJECTTYPE } = arrData);
     cardTemplate = cardTemplate
-        .replace("CARDHEADER", CARDHEADER)
-        .replace("CARDTITLE", CARDTITLE)
-        .replace("CARDBODY", CARDBODY)
-        .replace("CARDTIME", CARDTIME)
-        .replace("DETAILURL", DETAILURL);
+        .replaceAll("CARDHEADER", CARDHEADER)
+        .replaceAll("CARDTITLE", CARDTITLE)
+        .replaceAll("CARDBODY", CARDBODY)
+        .replaceAll("CARDTIME", CARDTIME)
+        .replaceAll("DETAILURL", DETAILURL)
+        .replaceAll("OBJECTID", OBJECTID)
+        .replaceAll("OBJECTTYPE", OBJECTTYPE);
     return cardTemplate;
 }
 

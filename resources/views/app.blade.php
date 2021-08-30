@@ -19,7 +19,9 @@
                         CARDTITLE: "CARDTITLE",
                         CARDBODY: "CARDBODY", 
                         CARDTIME: new Date(),
-                        DETAILURL: "/"
+                        DETAILURL: "/",
+                        OBJECTID: "OBJECTID",
+                        OBJECTTYPE: "OBJECTTYPE"
                     };
             const cardTemplate = $("div#template-card").html();
 
@@ -31,7 +33,9 @@
                         CARDTITLE: e.name,
                         CARDBODY: `Age ${e.age}, Salary $.${e.salary}`, 
                         CARDTIME: new Date(),
-                        DETAILURL: `/admin/employees/${e.id}`
+                        DETAILURL: `/admin/employees/${e.id}`,
+                        OBJECTID: e.id,
+                        OBJECTTYPE: "EMPLOYEE"
                     };
                     let tmpl = cardTemplate;
                     tmpl = window.fillCard(arrData, tmpl);
@@ -43,7 +47,9 @@
                         CARDTITLE: e.farm_name,
                         CARDBODY: e.product + ", " +e.weight + "kg", 
                         CARDTIME: new Date(),
-                        DETAILURL: `/admin/surveys/${e.id}`
+                        DETAILURL: `/admin/surveys/${e.id}`,
+                        OBJECTID: e.id,
+                        OBJECTTYPE: "SURVEY"
                     };
                     let tmpl = cardTemplate;
                     tmpl = window.fillCard(arrData, tmpl);
