@@ -1894,7 +1894,8 @@ window.fillCard = function (arrData, cardTemplate) {
   DETAILURL = arrData.DETAILURL;
   OBJECTID = arrData.OBJECTID;
   OBJECTTYPE = arrData.OBJECTTYPE;
-  cardTemplate = cardTemplate.replaceAll("CARDHEADER", CARDHEADER).replaceAll("CARDTITLE", CARDTITLE).replaceAll("CARDBODY", CARDBODY).replaceAll("CARDTIME", CARDTIME).replaceAll("DETAILURL", DETAILURL).replaceAll("OBJECTID", OBJECTID).replaceAll("OBJECTTYPE", OBJECTTYPE);
+  KEYWORD = arrData.KEYWORD;
+  cardTemplate = cardTemplate.replaceAll("CARDHEADER", CARDHEADER).replaceAll("CARDTITLE", CARDTITLE).replaceAll("CARDBODY", CARDBODY).replaceAll("CARDTIME", CARDTIME).replaceAll("DETAILURL", DETAILURL).replaceAll("OBJECTID", OBJECTID).replaceAll("OBJECTTYPE", OBJECTTYPE).replaceAll("KEYWORD", KEYWORD);
   return cardTemplate;
 };
 

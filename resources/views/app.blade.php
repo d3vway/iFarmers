@@ -21,7 +21,8 @@
                         CARDTIME: new Date(),
                         DETAILURL: "/",
                         OBJECTID: "OBJECTID",
-                        OBJECTTYPE: "OBJECTTYPE"
+                        OBJECTTYPE: "OBJECTTYPE",
+                        KEYWORD: "KEYWORD"
                     };
             const cardTemplate = $("div#template-card").html();
 
@@ -35,7 +36,8 @@
                         CARDTIME: new Date(),
                         DETAILURL: `/admin/employees/${e.id}`,
                         OBJECTID: e.id,
-                        OBJECTTYPE: "EMPLOYEE"
+                        OBJECTTYPE: "EMPLOYEE",
+                        KEYWORD: e.name
                     };
                     let tmpl = cardTemplate;
                     tmpl = window.fillCard(arrData, tmpl);
@@ -49,7 +51,8 @@
                         CARDTIME: new Date(),
                         DETAILURL: `/admin/surveys/${e.id}`,
                         OBJECTID: e.id,
-                        OBJECTTYPE: "SURVEY"
+                        OBJECTTYPE: "SURVEY",
+                        KEYWORD: e.product
                     };
                     let tmpl = cardTemplate;
                     tmpl = window.fillCard(arrData, tmpl);

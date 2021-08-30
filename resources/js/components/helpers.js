@@ -1,5 +1,5 @@
 window.fillCard = (arrData, cardTemplate) => {
-    ({ CARDHEADER, CARDTITLE, CARDBODY, CARDTIME, DETAILURL, OBJECTID, OBJECTTYPE } = arrData);
+    ({ CARDHEADER, CARDTITLE, CARDBODY, CARDTIME, DETAILURL, OBJECTID, OBJECTTYPE, KEYWORD } = arrData);
     cardTemplate = cardTemplate
         .replaceAll("CARDHEADER", CARDHEADER)
         .replaceAll("CARDTITLE", CARDTITLE)
@@ -7,7 +7,8 @@ window.fillCard = (arrData, cardTemplate) => {
         .replaceAll("CARDTIME", CARDTIME)
         .replaceAll("DETAILURL", DETAILURL)
         .replaceAll("OBJECTID", OBJECTID)
-        .replaceAll("OBJECTTYPE", OBJECTTYPE);
+        .replaceAll("OBJECTTYPE", OBJECTTYPE)
+        .replaceAll("KEYWORD", KEYWORD);
     return cardTemplate;
 }
 
