@@ -1891,8 +1891,13 @@ window.fillCard = function (arrData, cardTemplate) {
   CARDTITLE = arrData.CARDTITLE;
   CARDBODY = arrData.CARDBODY;
   CARDTIME = arrData.CARDTIME;
-  cardTemplate = cardTemplate.replace("CARDHEADER", CARDHEADER).replace("CARDTITLE", CARDTITLE).replace("CARDBODY", CARDBODY).replace("CARDTIME", CARDTIME);
+  DETAILURL = arrData.DETAILURL;
+  cardTemplate = cardTemplate.replace("CARDHEADER", CARDHEADER).replace("CARDTITLE", CARDTITLE).replace("CARDBODY", CARDBODY).replace("CARDTIME", CARDTIME).replace("DETAILURL", DETAILURL);
   return cardTemplate;
+};
+
+window.capz = function (s) {
+  return s[0].toUpperCase() + s.slice(1);
 };
 
 /***/ }),

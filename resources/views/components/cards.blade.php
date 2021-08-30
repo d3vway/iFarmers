@@ -6,7 +6,7 @@
             <p class="card-text">
                 CARDBODY
             </p>
-            <a href="#" class="btn btn-primary">Button</a>
+            <a href="DETAILURL" target="_blank" class="btn btn-primary">View</a>
         </div>
         <div class="card-footer text-muted">CARDTIME</div>
     </div>

@@ -14,6 +14,7 @@ class EmployeeUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $id;
     public $name;  
     public $age; 
     public $job; 
@@ -27,6 +28,7 @@ class EmployeeUpdated implements ShouldBroadcast
      */
     public function __construct($employee, $action)
     {
+        $this->id = $employee->id; 
         $this->name = $employee->name; 
         $this->age  = $employee->age;
         $this->job  = $employee->job;

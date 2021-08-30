@@ -2,13 +2,11 @@
 @section('title', 'Live Dashboard')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md">
-                <h2>Dashboard</h2>
-                <div id="dashboard_content"></div>
-                @include('components.cards')
-            </div>
+    <div class="row">
+        <div class="col-md">
+            <h2>Dashboard</h2>
+            <div id="dashboard_content"></div>
+            @include('components.cards')
         </div>
     </div>
 @stop
@@ -20,7 +18,8 @@
                         CARDHEADER: "CARDHEADER", 
                         CARDTITLE: "CARDTITLE",
                         CARDBODY: "CARDBODY", 
-                        CARDTIME: new Date()
+                        CARDTIME: new Date(),
+                        DETAILURL: "/"
                     };
             const cardTemplate = $("div#template-card").html();
 
@@ -28,25 +27,27 @@
             window.Echo.private('my-channel')
                 .listen('EmployeeUpdated', (e) => {
                     arrData = {
-                        CARDHEADER: "Employe " + e.action, 
+                        CARDHEADER: "Employe " + window.capz(e.action), 
                         CARDTITLE: e.name,
-                        CARDBODY: e.age + "$." + e.salary, 
-                        CARDTIME: new Date()
+                        CARDBODY: `Age ${e.age}, Salary $.${e.salary}`, 
+                        CARDTIME: new Date(),
+                        DETAILURL: `/admin/employees/${e.id}`
                     };
                     let tmpl = cardTemplate;
                     tmpl = window.fillCard(arrData, tmpl);
-                    $("div#dashboard_content").append(tmpl);
+                    $("div#dashboard_content").prepend(tmpl);
                 })
                 .listen('SurveyUpdated', (e) => {
                     arrData = {
-                        CARDHEADER: "Survey " + e.action, 
+                        CARDHEADER: "Survey " + window.capz(e.action), 
                         CARDTITLE: e.farm_name,
                         CARDBODY: e.product + ", " +e.weight + "kg", 
-                        CARDTIME: new Date()
+                        CARDTIME: new Date(),
+                        DETAILURL: `/admin/surveys/${e.id}`
                     };
                     let tmpl = cardTemplate;
                     tmpl = window.fillCard(arrData, tmpl);
-                    $("div#dashboard_content").append(tmpl);
+                    $("div#dashboard_content").prepend(tmpl);
                 });
         });
     </script>

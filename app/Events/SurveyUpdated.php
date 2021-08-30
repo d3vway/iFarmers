@@ -14,6 +14,7 @@ class SurveyUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $id;
     public $employee_id; 
     public $farm_name;
     public $number_of_farmer; 
@@ -32,6 +33,7 @@ class SurveyUpdated implements ShouldBroadcast
      */
     public function __construct($survey, $action)
     {
+        $this->id  = $survey->id; 
         $this->employee_id  = $survey->employee_id; 
         $this->farm_name    = $survey->farm_name;
         $this->number_of_farmer = $survey->number_of_farmer;
