@@ -45,7 +45,8 @@
         })();
 
         function deleteMe(id) {
-            $("div#"+id).remove();
+            const target = $("div#"+id);
+            target.hide('slow', function(){ target.remove(); });
         }
     </script>
 </div>
