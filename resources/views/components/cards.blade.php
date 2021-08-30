@@ -1,15 +1,14 @@
 <div id="template-card" class="d-none">
-    <div class="card text-center" id="box-OBJECTID">
+    <div class="card text-center" id="box-OBJECTTYPE-OBJECTID" style="display: none;margin-bottom: 10px;">
         <div class="card-header">CARDHEADER</div>
         <div class="card-body">
             <h5 class="card-title"> <i class="fas" id="icon-OBJECTID"></i></i> CARDTITLE</h5>
             <p class="card-text">
                 CARDBODY
             </p>
-            <a onclick="deleteMe('box-OBJECTID')" class="btn btn-warning">Remove</a>
+            <a onclick="deleteMe('box-OBJECTTYPE-OBJECTID')" class="btn btn-warning">Remove</a>
             <a href="DETAILURL" target="_blank" class="btn btn-primary">View</a>
             <a href="#" id="compare-OBJECTID" class="btn btn-info" style="display: none;">Compare</a>
-
         </div>
         <div class="card-footer text-muted">CARDTIME</div>
     </div>
