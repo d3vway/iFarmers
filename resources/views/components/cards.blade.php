@@ -1,11 +1,12 @@
 <div id="template-card" class="d-none">
-    <div class="card text-center">
+    <div class="card text-center" id="box-OBJECTID">
         <div class="card-header">CARDHEADER</div>
         <div class="card-body">
-            <h5 class="card-title">CARDTITLE</h5>
+            <h5 class="card-title"> <i class="fas" id="icon-OBJECTID"></i></i> CARDTITLE</h5>
             <p class="card-text">
                 CARDBODY
             </p>
+            <a onclick="deleteMe('box-OBJECTID')" class="btn btn-warning">Remove</a>
             <a href="DETAILURL" target="_blank" class="btn btn-primary">View</a>
             <a href="#" id="compare-OBJECTID" class="btn btn-info" style="display: none;">Compare</a>
 
@@ -30,6 +31,9 @@
 
                     if (type == "SURVEY") {
                         btnCompare.css("display", "");
+                        $("i#icon-" + id).addClass("fas fa-seedling");
+                    } else {
+                        $("i#icon-" + id).addClass("fas fa-user-alt");
                     }
 
                     btnCompare.on("click", function() {
@@ -40,5 +44,9 @@
                 }
             });
         })();
+
+        function deleteMe(id) {
+            $("div#"+id).remove();
+        }
     </script>
 </div>

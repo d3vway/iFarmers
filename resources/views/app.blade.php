@@ -31,7 +31,7 @@
                 .listen('EmployeeUpdated', (e) => {
                     arrData = {
                         CARDHEADER: "Employe " + window.capz(e.action), 
-                        CARDTITLE: e.name,
+                        CARDTITLE: window.capz(e.name),
                         CARDBODY: `Age ${e.age}, Salary $.${e.salary}`, 
                         CARDTIME: new Date(),
                         DETAILURL: `/admin/employees/${e.id}`,
@@ -46,7 +46,7 @@
                 .listen('SurveyUpdated', (e) => {
                     arrData = {
                         CARDHEADER: "Survey " + window.capz(e.action), 
-                        CARDTITLE: e.farm_name,
+                        CARDTITLE: window.capz(e.farm_name),
                         CARDBODY: e.product + ", " +e.weight + "kg", 
                         CARDTIME: new Date(),
                         DETAILURL: `/admin/surveys/${e.id}`,
